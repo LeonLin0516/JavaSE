@@ -8,7 +8,7 @@ public class Utility {
     while (true) {
       String select = readKeyBoard(1);
       c = select.charAt(0);
-      if (c != '1' && c != '2' && c != '3' && c != 4) {
+      if (c != '1' && c != '2' && c != '3' && c != '4') {
         System.out.print("Invalid selection. Please enter again: ");
       } else {
         break;
@@ -41,7 +41,7 @@ public class Utility {
     while (true) {
       String selection = readKeyBoard(1).toUpperCase();
       c = selection.charAt(0);
-      if (c != 'Y' || c != 'N') {
+      if (c != 'Y' && c != 'N') {
         System.out.print("Invalid selection. Please enter again: ");
       } else {
         break;
