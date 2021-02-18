@@ -15,7 +15,7 @@ public class CMUtility {
           continue;
         }
       }
-      if (line.length() < 1 || line.length() >= limit) {
+      if (line.length() < 1 || line.length() > limit) {
         System.out.print("Invalid input length (No greater than " + limit + ") Enter again: ");
         continue;
       }
