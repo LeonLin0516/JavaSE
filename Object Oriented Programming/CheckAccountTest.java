@@ -4,5 +4,11 @@ public class CheckAccountTest {
     acct.withdraw(5000);
     System.out.println("Your balance: " + acct.getBalance());
     System.out.println("Your overdraft balance: " + acct.getOverdraft());
+    acct.withdraw(18000);
+    System.out.println("Your balance: " + acct.getBalance());
+    System.out.println("Your overdraft balance: " + acct.getOverdraft());
+    acct.withdraw(3000);
+    System.out.println("Your balance: " + acct.getBalance());
+    System.out.println("Your overdraft balance: " + acct.getOverdraft());
   }
 }
