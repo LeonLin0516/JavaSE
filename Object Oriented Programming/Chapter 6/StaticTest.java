@@ -37,7 +37,15 @@ public class StaticTest {
     System.out.println(Circle.getTotal());
     System.out.println("*****************");
 
-
+    Account acct1 = new Account();
+    Account acct2 = new Account("123456", 2000);
+    Account.setInterestRate(0.012);
+    Account.setMinBalance(100);
+    System.out.println(acct1);
+    System.out.println(acct2);
+    System.out.println(Account.getInterestRate());
+    System.out.println(Account.getMinBalance());
+    System.out.println("*****************");
   }
 }
 
@@ -86,5 +94,65 @@ class Circle {
   
   public double findArea() {
     return 3.14 * radius * radius;
+  }
+}
+
+class Account {
+  private int id;
+  private String pwd = "000000";
+  private double balance;
+
+  private static double interestRate;
+  private static double minBalance = 1.0;
+  private static int init = 1001;
+
+  public Account() {
+    id = init++;
+  }
+
+  public Account(String pwd, double balance) {
+    this();
+    this.pwd = pwd;
+    this.balance = balance;
+  }
+
+  public int getId() {
+    return this.id;
+  }
+
+  public String getPwd() {
+    return this.pwd;
+  }
+
+  public void setPwd(String pwd) {
+    this.pwd = pwd;
+  }
+
+  public double getBalance() {
+    return this.balance;
+  }
+
+  public void setBalance(double balance) {
+    this.balance = balance;
+  }
+
+  public static double getInterestRate() {
+		return interestRate;
+	}
+
+  public static void setInterestRate(double interestRate) {
+		Account.interestRate = interestRate;
+	}
+
+  public static double getMinBalance() {
+		return minBalance;
+	}
+
+  public static void setMinBalance(double minBalance) {
+		Account.minBalance = minBalance;
+	}
+
+  public String toString() {
+    return "Account[id = " + id + " password = " + pwd + " balance = " + balance + " ]";
   }
 }
