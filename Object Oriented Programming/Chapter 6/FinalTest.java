@@ -11,6 +11,7 @@
 //    - explicit declaration
 //    - declare in block
 //    - declare in constructor
+// 5. static final: variable or method, not class or block code
 
 public class FinalTest {
   public static void main(String[] args) {
@@ -32,8 +33,9 @@ final class FinalA {
 }
 
 class FinalB {
-  public final void show() {
-
+  public final void show(final int A) {
+    final int NUM = 10;
+    // NUM += 10;
   }
 }
 

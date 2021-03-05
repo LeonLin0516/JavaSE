@@ -21,10 +21,10 @@
 
 public class CodeBlockTest {
   public static void main(String[] args) {
-    String desc = Person.desc;
-    Person p1 = new Person();
-    Person p2 = new Person();
-    Person.info();
+    String desc = Person_1.desc;
+    Person_1 p1 = new Person_1();
+    Person_1 p2 = new Person_1();
+    Person_1.info();
     System.out.println("***************");
     new Leaf();
     // root static block -> mid static block -> leaf static block -> 
@@ -35,16 +35,16 @@ public class CodeBlockTest {
   }
 }
 
-class Person {
+class Person_1 {
   String name;
   int age;
   static String desc = "I am a person";
 
-  public Person() {
+  public Person_1() {
 
   }
 
-  public Person(String name, int age) {
+  public Person_1(String name, int age) {
     this.name = name;
     this.age = age;
   }
