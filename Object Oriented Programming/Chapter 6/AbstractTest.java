@@ -8,11 +8,21 @@
 //    - only abstract class can have abstract methods
 //    - subclass has to override all abstract methods in superclass
 //    - cannot abstricize private, static, final methods
+// 4. Anonymous Inner Class
+//    - Abstract class = new abstract class() { override abstract methods }
+// 
 
 public class AbstractTest {
   public static void main(String[] args) {
     // Person p1 = new Person();
     // p1.eat();
+    Person p = new Person() {
+      @Override
+      public void eat() {
+        System.out.println("eat");
+      }
+    };
+    System.out.println("****************");
   }
 }
 
@@ -44,27 +54,125 @@ class Student extends Person {
   }
 }
 
+class MyDate {
+  private int year;
+  private int month;
+  private int day;
+
+  public int getYear() {
+    return this.year;
+  }
+
+  public void setYear(int year) {
+    this.year = year;
+  }
+
+  public int getMonth() {
+    return this.month;
+  }
+
+  public void setMonth(int month) {
+    this.month = month;
+  }
+
+  public int getDay() {
+    return this.day;
+  }
+
+  public void setDay(int day) {
+    this.day = day;
+  }
+
+  @Override
+  public String toString() {
+    return month + "/" + day + "/" + year;
+  }
+}
+
 abstract class Employee {
-  String name;
-  int id;
-  double salary;
+  private String name;
+  private int id;
+  private MyDate birthday;
+
   public Employee() {
 
   }
-  public Employee(String name, int id, double salary) {
+  public Employee(String name, int id, MyDate birthday) {
     this.name = name;
     this.id = id;
-    this.salary = salary;
+    this.birthday = birthday;
   }
-  public abstract void work();
+
+  public String getName() {
+    return this.name;
+  }
+
+  public void setName(String name) {
+    this.name = name;
+  }
+
+  public int getId() {
+    return this.id;
+  }
+
+  public void setId(int id) {
+    this.id = id;
+  }
+
+  public MyDate getBirthday() {
+    return this.birthday;
+  }
+
+  public void setBirthday(MyDate birthday) {
+    this.birthday = birthday;
+  }
+
+  public abstract double earning();
+  
+  @Override
+  public String toString() {
+    return "name = "  + name + " id = " + id + " birthday = " + birthday; 
+  }
 }
 
-class Manager extends Employee {
-  double bonus;
-  public Manager(String name, int id, double salary, double bonus) {
-    super(name, id, bonus);
+class MonthlyEmployee extends Employee {
+  private double monthlySalary;
+
+  public MonthlyEmployee(String name, int id, MyDate birthday) {
+    super(name, id, birthday);
   }
-  public void work() {
-    System.out.println("Manager works");
+
+  public double getMonthlySalary() {
+    return this.monthlySalary;
   }
+
+  public void setMonthlySalary(double monthlySalary) {
+    this.monthlySalary = monthlySalary;
+  }
+
+  @Override
+  public double earning() {
+    return monthlySalary;
+  }
+
+  @Override
+  public String toString() {
+    return "MonthlyEmployee[" + super.toString() + "]";
+  }
+}
+
+class HourlyEmployee extends Employee{
+  private double wage;
+  private double hour;
+
+  @Override
+  public double earning() {
+    return wage * hour;
+  }
+
+  @Override
+  public String toString() {
+    return "HourlyEmployee[" + super.toString() + "]";
+  }
+  
 }
