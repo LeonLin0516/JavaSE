@@ -1,3 +1,5 @@
+import java.util.Calendar;
+
 // 1. descriptor
 //    - class, method, 
 // 2. abstrct class
@@ -23,6 +25,19 @@ public class AbstractTest {
       }
     };
     System.out.println("****************");
+    Calendar cal = Calendar.getInstance();
+    int month = cal.get(Calendar.MONTH) + 1;
+
+    Employee[] emps = new Employee[2];
+    emps[0] = new MonthlyEmployee("Leon", 1002, new MyDate(1992, 2, 28), 8000.0);
+    emps[1] = new HourlyEmployee("James", 1003, new MyDate(1993, 7, 16), 45, 200);
+    for (int i = 0; i < emps.length; i += 1) {
+      System.out.println(emps[i]);
+      System.out.println("earning: " + emps[i].earning());
+      if (month == emps[i].getBirthday().getMonth()) {
+        System.out.println("Happy Birthday!");
+      }
+    }
   }
 }
 
@@ -58,6 +73,12 @@ class MyDate {
   private int year;
   private int month;
   private int day;
+
+  public MyDate(int year, int month, int day) {
+    this.year = year;
+    this.month = month;
+    this.day = day;
+  }
 
   public int getYear() {
     return this.year;
@@ -138,8 +159,9 @@ abstract class Employee {
 class MonthlyEmployee extends Employee {
   private double monthlySalary;
 
-  public MonthlyEmployee(String name, int id, MyDate birthday) {
+  public MonthlyEmployee(String name, int id, MyDate birthday, double monthlySalary) {
     super(name, id, birthday);
+    this.monthlySalary = monthlySalary;
   }
 
   public double getMonthlySalary() {
@@ -164,6 +186,12 @@ class MonthlyEmployee extends Employee {
 class HourlyEmployee extends Employee{
   private double wage;
   private double hour;
+
+  public HourlyEmployee(String name, int id, MyDate birthday, double wage, double hour) {
+    super(name, id, birthday);
+    this.wage = wage;
+    this.hour = hour;
+  }
 
   @Override
   public double earning() {
